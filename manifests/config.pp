@@ -1,7 +1,7 @@
 class flapjack_base::config {
 
-  file { '/etc/flapjack/flapjack-config.yaml':
-    content  => template('flapjack_base/etc/flapjack/flapjack-config.yaml.erb'),
+  file { '/etc/flapjack/flapjack_config.yaml':
+    content  => template('flapjack_base/etc/flapjack/flapjack_config.yaml.erb'),
 #    notify => Service['flapjack'],
   }
 
