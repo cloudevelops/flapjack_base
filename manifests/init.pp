@@ -35,8 +35,20 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class flapjack_base {
+class flapjack_base (
+  $base_redis_host = $flapjack_base::params::base_redis_host,
+  $base_redis_port = $flapjack_base::params::base_redis_port,
+  $base_internal_redis = $flapjack_base::params::internal_redis,
+  $base_flapjack_host = $flapjack_base::params::base_flapjack_host,
+  $base_flapjack_user = undef,
+  $base_nginx = $flapjack_base::params::base_nginx
+) inherits flapjack_base::params {
 
-  class {'::flapjack': }
+  class {'::flapjack': } ->
+  class {'::flapjack_base::config': }
+
+  if $flapjack_base::base_nginx {
+    include flapjack_base::nginx
+  }
 
 }
