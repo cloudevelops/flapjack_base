@@ -38,6 +38,7 @@
 class flapjack_base (
   $base_redis_host = $flapjack_base::params::base_redis_host,
   $base_redis_port = $flapjack_base::params::base_redis_port,
+  $base_redis_db = $flapjack_base::params::base_redis_db,
   $base_internal_redis = $flapjack_base::params::internal_redis,
   $base_flapjack_host = $flapjack_base::params::base_flapjack_host,
   $base_flapjack_user = undef,

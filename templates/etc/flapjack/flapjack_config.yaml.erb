@@ -10,7 +10,7 @@ production:
   redis:
     host: <%= @base_redis_host %>
     port: <%= @base_redis_port %>
-    db: 0
+    db: <%= @base_redis_db %>
   # Processes monitoring events off the *events* queue (a redis list) and decides
   # what actions to take (generate notification event, record state changes, etc)
   processor:
