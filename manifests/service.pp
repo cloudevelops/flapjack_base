@@ -7,11 +7,11 @@ class flapjack_base::service {
       hasstatus  => true,
       hasrestart => false,
       require    => [
-        File['/etc/flapjack/flapjack-config.yaml'],
+        File['/etc/flapjack/flapjack_config.yaml'],
       ],
       subscribe  => [
         Package['flapjack'],
-        File['/etc/flapjack/flapjack-config.yaml'],
+        File['/etc/flapjack/flapjack_config.yaml'],
       ]
     }
   }
