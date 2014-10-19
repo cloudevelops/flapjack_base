@@ -6,4 +6,5 @@ class flapjack_base::params {
   $base_internal_redis = true
   $base_flapjack_host = $fqdn
   $base_nginx = true
+  $base_manage_service = true
 }
