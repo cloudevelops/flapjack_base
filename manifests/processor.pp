@@ -9,14 +9,14 @@ define flapjack_base::processor (
     notify { "Now is 1, doing nothing": }
 
   } else {
-    file { "/etc/flapjack/flapjack_processor_${newcounter}.yaml":
+    file { "/etc/flapjack/flapjack_processor_${name}.yaml":
       content => template('flapjack_base/etc/flapjack/flapjack_processor.yaml.erb'),
       require => Class['flapjack_base'];
     }
 
-    file { "/etc/init/flapjack_processor_${newcounter}.conf":
+    file { "/etc/init/flapjack_processor_${name}.conf":
       content => template('flapjack_base/etc/init/flapjack_processor.conf.erb'),
-      require => [ Class['flapjack_base'], File["/etc/flapjack/flapjack_processor_${newcounter}.yaml"] ];
+      require => [ Class['flapjack_base'], File["/etc/flapjack/flapjack_processor_${name}.yaml"] ];
     }
 
 
