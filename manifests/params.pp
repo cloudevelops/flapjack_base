@@ -18,4 +18,5 @@ class flapjack_base::params {
   $base_jabber_alias = 'flapjack'
   $base_jabber_identifiers = [ "@flapjack" ]
   $base_jabber_rooms = [ "gimp@conference.jabber.example.com","log@conference.jabber.example.com" ]
+  $base_new_check_scheduled_maintenance_duration = '0 seconds'
 }

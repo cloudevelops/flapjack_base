@@ -56,7 +56,7 @@ class flapjack_base (
   $base_jabber_alias = $flapjack_base::params::base_jabber_alias,
   $base_jabber_identifiers = $flapjack_base::params::base_jabber_identifiers,
   $base_jabber_rooms = $flapjack_base::params::base_jabber_rooms,
-
+  $base_new_check_scheduled_maintenance_duration = $flapjack_base::params::base_new_check_scheduled_maintenance_duration,
 ) inherits flapjack_base::params {
 
   class {'::flapjack': } ->
@@ -66,6 +66,7 @@ class flapjack_base (
     base_redis_host => $base_redis_host,
     base_redis_port => $base_redis_port,
     base_redis_db => $base_redis_db,
+    base_new_check_scheduled_maintenance_duration => $base_new_check_scheduled_maintenance_duration,
   } ->
   class {'flapjack_base::monitoring': }
 
