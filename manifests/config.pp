@@ -1,5 +1,10 @@
 class flapjack_base::config {
 
+  file {'flapjack-diner':
+    ensure => present,
+    provider => 'gem'
+  }
+
   file { '/etc/flapjack/flapjack_config.yaml':
     content  => template('flapjack_base/etc/flapjack/flapjack_config.yaml.erb'),
 #    notify => Service['flapjack'],
