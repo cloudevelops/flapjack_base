@@ -6,8 +6,5 @@ respawn
 respawn limit 99 5
 
 script
-/opt/flapjack/bin/flapjack --config /etc/flapjack/flapjack_processor_<%= @name %>.yaml server start --no-daemonize
-end script
-
-post-start script
+  exec /opt/flapjack/bin/flapjack --config /etc/flapjack/flapjack_processor_<%= @name %>.yaml server start --no-daemonize
 end script
