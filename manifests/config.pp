@@ -13,12 +13,7 @@ class flapjack_base::config {
   }
   file { "/etc/init/flapjack.conf":
     content => template('flapjack_base/etc/init/flapjack.conf.erb'),
-  } ->
-  service { 'flapjack':
-    ensure => running,
-    subscribe => [ File[ "/etc/flapjack/flapjack_config.yaml" ] ],
   }
-
 
   logrotate::rule { 'flapjack-log':
     path          => '/var/log/flapjack/*.log',
