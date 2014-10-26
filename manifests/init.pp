@@ -51,7 +51,11 @@ class flapjack_base (
   class {'::flapjack': } ->
   class {'::flapjack_base::config': } ~>
   class {'::flapjack_base::service': } ->
-  flapjack_base::processor { $base_processor_count: }
+  flapjack_base::processor { $base_processor_count:
+    base_redis_host => $base_redis_host,
+    base_redis_port => $base_redis_port,
+    base_redis_db => $base_redis_db,
+  }
 
   if $flapjack_base::base_nginx {
     include flapjack_base::nginx

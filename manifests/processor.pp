@@ -1,12 +1,10 @@
 define flapjack_base::processor (
-  $counter = 0,
+  $base_redis_host,
+  $base_redis_port,
+  $base_redis_db,
 ) {
 
-#  $newcounter = $counter + $name
-  notify { "Name: ${name}, Counter: ${counter}, Newcounter: ${newcounter}": }
   if $name == 1 {
-
-    notify { "Now is 1, doing nothing": }
 
   } else {
     file { "/etc/flapjack/flapjack_processor_${name}.yaml":
@@ -17,15 +15,18 @@ define flapjack_base::processor (
       content => template('flapjack_base/etc/init/flapjack_processor.conf.erb'),
     }
 
-
     $dec = $name - 1
     $hash = {
       "${dec}" => {}
-#        "counter" => $newcounter,
-      }
-#    }
+    }
 
-    create_resources('flapjack_base::processor', $hash)
+    $processor_defaults = {
+      base_redis_host => $base_redis_host,
+      base_redis_port => $base_redis_port,
+      base_redis_db => $base_redis_db
+    }
+
+    create_resources('flapjack_base::processor',$processor_defaults, $hash)
 
   }
 }
