@@ -8,4 +8,5 @@ class flapjack_base::params {
   $base_processor_count = 1
   $base_nginx = true
   $base_manage_service = true
+  $base_monitoring_collectd = hiera('collectd_base::base_enabled',false)
 }
