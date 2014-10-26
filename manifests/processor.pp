@@ -4,15 +4,15 @@ define flapjack_base::processor (
   $base_redis_db,
 ) {
 
-  if $name == 1 {
-
-  } else {
+  if $name != 1 {
     file { "/etc/flapjack/flapjack_processor_${name}.yaml":
       content => template('flapjack_base/etc/flapjack/flapjack_processor.yaml.erb'),
-    }
-
+    } ->
     file { "/etc/init/flapjack_processor_${name}.conf":
       content => template('flapjack_base/etc/init/flapjack_processor.conf.erb'),
+    } ->
+    service { "flapjack_processor_${name}":
+      ensure => running
     }
 
     $dec = $name - 1
