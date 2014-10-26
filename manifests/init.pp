@@ -50,12 +50,11 @@ class flapjack_base (
 
   class {'::flapjack': } ->
   class {'::flapjack_base::config': } ~>
-  class {'::flapjack_base::service': }
+  class {'::flapjack_base::service': } ->
+  flapjack_base::processor { $base_processor_count: }
 
   if $flapjack_base::base_nginx {
     include flapjack_base::nginx
   }
-
-  flapjack_base::processor { $base_processor_count: }
 
 }
