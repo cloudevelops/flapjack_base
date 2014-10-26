@@ -43,6 +43,7 @@ class flapjack_base (
   $base_internal_redis = $flapjack_base::params::internal_redis,
   $base_flapjack_host = $flapjack_base::params::base_flapjack_host,
   $base_flapjack_user = undef,
+  $base_processor_count = $flapjack_base::params::base_processor_count,
   $base_manage_service = $flapjack_base::params::base_manage_service,
   $base_nginx = $flapjack_base::params::base_nginx
 ) inherits flapjack_base::params {
@@ -54,5 +55,7 @@ class flapjack_base (
   if $flapjack_base::base_nginx {
     include flapjack_base::nginx
   }
+
+  flapjack_base::processor { $base_processor_count: }
 
 }

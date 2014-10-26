@@ -1,13 +1,31 @@
-define flapjack_base::processor {
+define flapjack_base::processor (
+  $counter = 0,
+) {
 
-  file { "/etc/flapjack/flapjack_processor_${$name}.yaml":
-    content => template('flapjack_base/etc/flapjack/flapjack_processor.yaml.erb'),
-    require => Class['flapjack_base'];
+  $newcounter = $counter + $name
+  notify { "Name: ${name}, Counter: ${counter}, Newcounter: ${newcounter}": }
+  if $name == 1 {
+
+    notify { "Now is 1: ${newcounter}": }
+
+#    file { "/etc/flapjack/flapjack_processor_${newcounter}.yaml":
+#      content => template('flapjack_base/etc/flapjack/flapjack_processor.yaml.erb'),
+#      require => Class['flapjack_base'];
+#    }
+
+#    file { "/etc/init/flapjack_processor_${newcounter}.conf":
+#      content => template('flapjack_base/etc/init/flapjack_processor.conf.erb'),
+#      require => [ Class['flapjack_base'], File["/etc/flapjack/flapjack_processor_${newcounter}.yaml"] ];
+#    }
+  } else {
+    $dec = $name - 1
+    $hash = {
+      "${dec}" => {
+        "counter" => $newcounter,
+      }
+    }
+
+    create_resources('processor', $hash)
+
   }
-
-  file { "/etc/init/flapjack_processor_${$name}.conf":
-    content => template('flapjack_base/etc/init/flapjack_processor.conf.erb'),
-    require => [ Class['flapjack_base'], File["/etc/flapjack/flapjack_processor_${$name}.yaml"] ];
-  }
-
 }
