@@ -1,6 +1,6 @@
 class flapjack_base::config {
 
-  file {'flapjack-diner':
+  package {'flapjack-diner':
     ensure => present,
     provider => 'gem'
   }
