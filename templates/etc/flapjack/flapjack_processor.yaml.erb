@@ -8,9 +8,9 @@ production:
     level: INFO
     syslog_errors: yes
   redis:
-    host: <%= scope.lookupvar('redis_base::base_redis_host') %>
-    port: <%= scope.lookupvar('redis_base::base_redis_port') %>
-    db: <%= scope.lookupvar('redis_base::base_redis_db') %>
+    host: <%= scope.lookupvar('::redis_base::base_redis_host') %>
+    port: <%= scope.lookupvar('::redis_base::base_redis_port') %>
+    db: <%= scope.lookupvar('::redis_base::base_redis_db') %>
   # Processes monitoring events off the *events* queue (a redis list) and decides
   # what actions to take (generate notification event, record state changes, etc)
   processor:

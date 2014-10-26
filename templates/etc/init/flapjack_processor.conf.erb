@@ -7,7 +7,7 @@ respawn limit 99 5
 
 script
 cd "/opt/flapjack/"
-FLAPJACK_ENV='production' bundle exec bin/flapjack --config /etc/flapjack_processor_<%= @name %>.yaml server start --no-daemonize
+FLAPJACK_ENV='production' bundle exec bin/flapjack --config /etc/flapjack/flapjack_processor_<%= @name %>.yaml server start --no-daemonize
 end script
 
 post-start script
