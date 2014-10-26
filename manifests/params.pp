@@ -9,4 +9,13 @@ class flapjack_base::params {
   $base_nginx = true
   $base_manage_service = true
   $base_monitoring_collectd = hiera('collectd_base::base_enabled',false)
+  $base_jabber_enabled = false
+  $base_jabber_queue = 'jabber_notifications'
+  $base_jabber_server = 'jabber.example.com'
+  $base_jabber_port = '5222'
+  $base_jabber_jabberid = 'flapjack@jabber.example.com'
+  $base_jabber_password = 'good-password'
+  $base_jabber_alias = 'flapjack'
+  $base_jabber_identifiers = [ "@flapjack" ]
+  $base_jabber_rooms = [ "gimp@conference.jabber.example.com","log@conference.jabber.example.com" ]
 }

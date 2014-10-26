@@ -127,21 +127,24 @@ production:
     # Connects to an XMPP (jabber) server, sends notifications (to rooms and individuals),
     # handles acknowledgements from jabber users and other commands.
     jabber:
-      enabled: no
+      enabled: <% if @base_jabber_enabled %>yes<% else %>no<% end %>
       # the redis queue this pikelet will look for notifications on
       queue: jabber_notifications
-      server: "jabber.example.com"
-      port: 5222
-      jabberid: "flapjack@jabber.example.com"
-      password: "good-password"
-      alias: "flapjack"
+      server: "<%= @base_jabber_server %>"
+      port: <%= @base_jabber_port %>
+      jabberid: "<%= @base_jabber_jabberid %>"
+      password: "<%= @base_jabber_password %>"
+      alias: "<%= @base_jabber_alias %>"
       # List of strings that this pikelet user will respond to
       identifiers:
-        - "@flapjack"
+<% @base_jabber_identifiers.each do |value| -%>
+        - "<%= value %>"
+<% end >
       # the Multi-User Chats the pikelet should join and announce to
       rooms:
-        - "gimp@conference.jabber.example.com"
-        - "log@conference.jabber.example.com"
+<% @base_jabber_rooms.each do |value| -%>
+        - "<%= value %>"
+<% end >
       logger:
         level: INFO
         syslog_errors: yes

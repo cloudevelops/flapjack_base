@@ -47,6 +47,16 @@ class flapjack_base (
   $base_manage_service = $flapjack_base::params::base_manage_service,
   $base_nginx = $flapjack_base::params::base_nginx,
   $base_monitoring_collectd = $flapjack_base::params::base_monitoring_collectd,
+  $base_jabber_enabled = $flapjack_base::params::base_jabber_enabled,
+  $base_jabber_queue = $flapjack_base::params::base_jabber_queue,
+  $base_jabber_server = $flapjack_base::params::base_jabber_server,
+  $base_jabber_port = $flapjack_base::params::base_jabber_port,
+  $base_jabber_jabberid = $flapjack_base::params::base_jabber_jabberid,
+  $base_jabber_password = $flapjack_base::params::base_jabber_password,
+  $base_jabber_alias = $flapjack_base::params::base_jabber_alias,
+  $base_jabber_identifiers = $flapjack_base::params::base_jabber_identifiers,
+  $base_jabber_rooms = $flapjack_base::params::base_jabber_rooms,
+
 ) inherits flapjack_base::params {
 
   class {'::flapjack': } ->
