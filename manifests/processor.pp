@@ -26,7 +26,7 @@ define flapjack_base::processor (
       base_redis_db => $base_redis_db
     }
 
-    create_resources('flapjack_base::processor',$processor_defaults, $hash)
+    create_resources('flapjack_base::processor',$hash,$processor_defaults)
 
   }
 }
