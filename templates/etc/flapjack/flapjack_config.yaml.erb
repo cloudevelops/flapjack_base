@@ -139,12 +139,12 @@ production:
       identifiers:
 <% @base_jabber_identifiers.each do |value| -%>
         - "<%= value %>"
-<% end >
+<% end -%>
       # the Multi-User Chats the pikelet should join and announce to
       rooms:
 <% @base_jabber_rooms.each do |value| -%>
         - "<%= value %>"
-<% end >
+<% end -%>
       logger:
         level: INFO
         syslog_errors: yes
