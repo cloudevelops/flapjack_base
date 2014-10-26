@@ -1,0 +1,10 @@
+description "Flapjack"
+author      "Zdenek Janda - zdenek.janda@cloudevelops.com"
+
+# Automatically Respawn:
+respawn
+respawn limit 99 5
+
+script
+  exec /opt/flapjack/bin/flapjack --config /etc/flapjack/flapjack_config.yaml server start --no-daemonize
+end script

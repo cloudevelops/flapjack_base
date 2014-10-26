@@ -5,10 +5,20 @@ class flapjack_base::config {
     provider => 'gem'
   }
 
+  file {'/etc/init.d/flapjack':
+    ensure => absent,
+  }->
   file { '/etc/flapjack/flapjack_config.yaml':
     content  => template('flapjack_base/etc/flapjack/flapjack_config.yaml.erb'),
-#    notify => Service['flapjack'],
   }
+  file { "/etc/init/flapjack.conf":
+    content => template('flapjack_base/etc/init/flapjack.conf.erb'),
+  } ->
+  service { 'flapjack':
+    ensure => running,
+    subscribe => [ File[ "/etc/flapjack/flapjack_config.yaml" ] ],
+  }
+
 
   logrotate::rule { 'flapjack-log':
     path          => '/var/log/flapjack/*.log',
